@@ -1,32 +1,27 @@
-﻿// Задание 1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+﻿// Задание 3.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 using namespace std;
-#include <string>
 #include <iostream>
-
-int find_characters(string s1, string s2)
-{
-	int count = 0;
-	while (s1.find(s2) != s1.npos)
-	{
-		count++;
-		s1.erase(s1.find(s2), s2.length());
-	}
-	return count;
-}
+#include <string>
 
 int main()
 {
 	setlocale(0, "");
 	string str;
-	string simv;
-	cout << "Введите строку: ";
+	cout << "Введите строку с цифрой, используя латинскую раскладку: ";
 	getline(cin, str);
-	cout << "Введите символ: ";
-	cin >> simv;
-	cout << "Кол-во символов в строке: " << find_characters(str, simv) << endl;
+	int i = str.length();
+	for (int i = 0; i < str.length(); i++)
+	{
+		if (isdigit(int(str[i])))
+		{
+			str.erase(str.rfind(int(str[i])), 1);
+		}
+	}
+	cout << "Строка без цифр: " << str << endl;
 	return 0;
 }
+
 
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
